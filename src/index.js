@@ -11,6 +11,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
+require('./services/authController')(app)
 app.use("/", require("./routes/routes"));
 
 app.listen(app.get("port"), () => {
