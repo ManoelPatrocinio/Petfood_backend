@@ -13,10 +13,15 @@ const cliente = new Schema({
     },  
     phone:{
         type:Number,
-        require:true
+        require:true,
     },  
     cpf:{
         type:String,
+        require:true,
+        select:false,  //para que o cpf não aparece em buscar comuns  
+    },
+    birthday:{
+        type:Date,
         require:true,
         select:false,  //para que o cpf não aparece em buscar comuns  
     },  

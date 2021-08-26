@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config
-const URI = 'mongodb://localhost/Petfood'; 
-// process.env.MONGO_URL
+const URI = process.env.MONGO_URL
 
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);

@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     const {email,cpf} =  req.body;
-
+    console.log("dados recebido:",email)
     //busca no bd e verifica se o user exist
     const user = await User.findOne({email}).select('+cpf')
 
