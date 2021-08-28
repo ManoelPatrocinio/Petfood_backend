@@ -2,7 +2,7 @@ const express  = require("express");
 const User     = require("../models/clients") 
 const bcrypt   = require("bcryptjs")
 const jwt      = require("jsonwebtoken")
-const authConfig = require("../config/auth")
+const authConfig = require("../config/auth.json")
 
 const router = express.Router();
 
@@ -31,19 +31,25 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     const {email,cpf} =  req.body;
-    console.log("dados recebido:",email)
+    console.log("dados recebido:",req.body)
+
     //busca no bd e verifica se o user exist
     const user = await User.findOne({email}).select('+cpf')
 
-    if(!user)
-      return res.json({ error: true, message: 'Usuário não cadastrado' });
+    if(!user){
+      return res.json({ error: true, message: 'Usuário não cadastrado'  }).status(400);
+      // res.status(400).send({ error: true, message: 'Usuário não cadastrado' });
+  
+    }
     
 
     //compara a senha informado com a registado no bd
-    if(!await bcrypt.compare(cpf, user.cpf))    
-      return res.json({ error: true, message: 'Senha inválida' });
+    if(!await bcrypt.compare(cpf.toString (), user.cpf)){
+      return res.json({ error: true, message: 'Senha inválida'  }).status(400);
 
-    user.cpf = undefined  
+    }    
+
+    // user.cpf = undefined  
 
     // criar um token para o user, que inspira em 1 dia
     const token = jwt.sign({cpf: user.cpf}, authConfig.yourSecret,{

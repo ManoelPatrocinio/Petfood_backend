@@ -11,7 +11,10 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-require('./services/authController')(app)
+// para controller de atenticação
+require('./controller/authController')(app)
+require('./controller/processController')(app)
+
 app.use("/", require("./routes/routes"));
 
 app.listen(app.get("port"), () => {
