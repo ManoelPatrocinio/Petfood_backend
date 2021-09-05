@@ -1,5 +1,5 @@
-const Petshop = require("../models/petshop");
-const Product = require("../models/product");
+const Petshop = require("../app/models/petshop");
+const Product = require("../app/models/product");
 const petshopsInfos = require("./petfood.json");
 const createRecipient = require("../services/pagarme").createRecipient;
 require("../data/database");

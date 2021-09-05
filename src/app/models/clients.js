@@ -25,6 +25,18 @@ const cliente = new Schema({
         require:true,
         select:false,  //para que o cpf não aparece em buscar comuns  
     },  
+    password:{
+        type:String,
+        select:false,  //para que o cpf não aparece em buscar comuns  
+    },
+    passwordResertToken:{
+        type:String,
+        select:false,  //para que o cpf não aparece em buscar comuns  
+    },
+    passwordResertExpires:{
+        type:String,
+        select:false,  //para que o cpf não aparece em buscar comuns  
+    },
     created_at:{
         type:Date,
         default: Date.now

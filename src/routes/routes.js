@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router();
 
-const Petshops = require("../models/petshop");
-const Products = require("../models/product");
+const Petshops = require("../app/models/petshop");
+const Products = require("../app/models/product");
 const createSplitTransaction = require('../services/pagarme').createSplitTransaction;
 
 

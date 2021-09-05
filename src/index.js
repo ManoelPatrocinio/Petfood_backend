@@ -12,11 +12,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // para controller de atenticação
-require('./controller/authController')(app)
-require('./controller/processController')(app)
+require('./app/controller/index')(app)
 
 app.use("/", require("./routes/routes"));
 
 app.listen(app.get("port"), () => {
-  console.log("api up");
+  console.log("api up on port", process.env.PORT);
 });
