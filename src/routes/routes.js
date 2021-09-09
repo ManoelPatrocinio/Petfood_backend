@@ -3,8 +3,6 @@ const router = express.Router();
 
 const Petshops = require("../app/models/petshop");
 const Products = require("../app/models/product");
-const createSplitTransaction = require('../services/pagarme').createSplitTransaction;
-
 
 router.get('/petshops',async(req,res) =>{
     try{
@@ -30,15 +28,6 @@ router.get("/petshop/:id", async (req, res) => {
   }
 });
 
-router.post("/purchase", async (req, res) => {
-  try {
-    const transaction = await createSplitTransaction(req.body);
-
-    res.json(transaction);
-  } catch (err) {
-    res.json({ error: true, message: err.message });
-  }
-});
 
 
 module.exports = router;

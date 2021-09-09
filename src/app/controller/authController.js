@@ -33,7 +33,6 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     const {email,cpf} =  req.body;
-    console.log("dados recebido:",req.body)
 
     //busca no bd e verifica se o user exist
     const user = await User.findOne({email}).select('+cpf')
@@ -59,7 +58,6 @@ router.post("/login", async (req, res) => {
     })
 
     //se tudo ok
-    console.log("dados do login:", user)
     res.send({
         user, 
         token:generateToken({cpf: user.cpf})

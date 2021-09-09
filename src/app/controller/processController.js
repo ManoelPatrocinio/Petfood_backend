@@ -1,13 +1,22 @@
 // o usuario precisa estar autemticado para ter acessar ou dar continuidade
 
-const express = require("express")
-const authMiddleware = require('../middleware/auth')
+const express = require("express");
+const authMiddleware = require("../middleware/auth");
 const router = express.Router();
 
-router.use(authMiddleware
-    )
-router.get('/',(req,res) =>{
-    res.send({ok:true, user:req.user})
-})
+const createSplitTransaction = require("../../services/pagarme").createSplitTransaction;
 
-module.exports = app => app.use('/projects',router)
+router.use(authMiddleware);
+
+
+router.post("/purchase", async (req, res) => {
+  try {
+    const transaction = await createSplitTransaction(req.body);
+
+    res.json(transaction);
+  } catch (err) {
+    res.json({ error: true, message: err.message });
+  }
+});
+
+module.exports = (app) => app.use("/checked", router);
