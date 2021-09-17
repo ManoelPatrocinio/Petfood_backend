@@ -6,7 +6,7 @@ const jwt          = require("jsonwebtoken")
 const authConfig   = require("../../config/auth.json")
 const mailer       = require('../../modules/mailer')
 
-const router = express.Router();
+const router = express.Router(); 
 
 // criar um token para o user, que inspira em 1 dia
 function generateToken(params = {}) {
