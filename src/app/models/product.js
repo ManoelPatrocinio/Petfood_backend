@@ -8,6 +8,7 @@ const product = new Schema({
   },
   nome: String,
   capa: String,
+  marca: String,
   preco: Number,
   avaliacoes: Number,
 });
