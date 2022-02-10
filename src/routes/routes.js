@@ -5,7 +5,7 @@ const Petshops = require("../app/models/petshop");
 const Products = require("../app/models/product");
 
 // Pagina Principal
-router.get("/store", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     //busca os produtos para a section de Destaque
     const products = await Products.find()
