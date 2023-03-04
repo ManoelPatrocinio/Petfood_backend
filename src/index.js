@@ -6,7 +6,7 @@ const morgan = require("morgan"); //controle das requisições
 
 require("./data/database");
 
-app.set("port", process.env.PORT || 8000);
+app.set("port", process.env.PORT || 3333);
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
